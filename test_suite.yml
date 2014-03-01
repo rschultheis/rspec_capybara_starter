@@ -1,0 +1,15 @@
+#this file contains all the configuration for the test framework
+---
+
+#start with global configuration
+TEST_BROWSER: firefox
+LOG_LEVEL: debug
+
+#and environment based overrides
+ENVIRONMENTS:
+  qa:
+    BASE_URL: http://google.com
+
+  production:
+    BASE_URL: https://google.com
+

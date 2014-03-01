@@ -1,0 +1,12 @@
+--require spec_helper
+
+--color
+
+--format progress
+
+--format html
+--out reports/test_report.html
+
+--format RspecJunitFormatter
+--out reports/ci_report.xml
+
