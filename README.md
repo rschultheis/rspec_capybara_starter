@@ -46,8 +46,8 @@ To simply run all tests using all defaults:
 
 To run tests using Chrome or PhantomJS:
 
-    $ BROWSER=chrome rspec
-    $ BROWSER=phantomjs rspec
+    $ TEST_BROWSER=chrome rspec
+    $ TEST_BROWSER=phantomjs rspec
 
 To run tests against a specific environment:
 

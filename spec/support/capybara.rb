@@ -30,7 +30,7 @@ RSpec.configure do |config|
         Capybara::Selenium::Driver.new(app, :browser => browser)
       end
     else
-      Kernel.abort "Unsupported browser: #{test_config['BROWSER']}"
+      Kernel.abort "Unsupported browser: #{browser}"
     end
     Capybara.default_driver = browser
 
