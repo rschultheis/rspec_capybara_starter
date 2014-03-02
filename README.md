@@ -51,7 +51,7 @@ To run tests using Chrome or PhantomJS:
 
 To run tests against a specific environment:
 
-    $ ENVIRONMENT=production rspec
+    $ TEST_ENVIRONMENT=production rspec
 
 To run tests without debug logging on the console
 
@@ -95,9 +95,9 @@ clean and free of constants.
 * Defaults are layed out at the top level in *test_suite.yml*.  You can add bits of configuration you want there.
 * Environment based overrides are added to the Environments section in test_suite.yml.  This makes it possible
   to use different bits of configuration for QA, Staging, or possibly even a local development environment.
-  You can specify an environment variable called ENVIRONMENT to have the test suite incorporate the environment based
+  You can specify an environment variable called TEST_ENVIRONMENT to have the test suite incorporate the environment based
   configuration into the test config.  In this way switching the tests from one environment to another requires specifying
-  only a single config value, the ENVIRONMENT.  You can add as many environments as you want to the environment section.
+  only a single config value, the TEST_ENVIRONMENT.  You can add as many environments as you want to the environment section.
 * Use environment variables to override any config value.  Environment variables trump both the defaults and the Environment
   overrides.  For example setting an environment variable called BASE_URL will ensure the test configuration uses that
   regardless of what is set in test_suite.yml as defaults or any environment that may be present.
