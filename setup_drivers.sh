@@ -1,13 +1,23 @@
 #!/bin/bash
 set -e
-set -x
+
+#make sure we have everything needed to do the setup
+NEEDED_UTILS=( \
+  "wget" \
+  "unzip" \
+  "tar" \
+)
+for util in ${NEEDED_UTILS[*]}
+do
+  command -v $util >/dev/null 2>&1 || { echo >&2 "I require $util but it's not installed.  Aborting."; exit 1; }
+done
 
 #Depending on the OS, figure out which chromedriver and phantomjs to download
 #This hasnt been tested on windows, sooo....
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
   FilesToDownload=( \
-    "http://chromedriver.storage.googleapis.com/2.9/chromedriver_linux32.zip" \
-    "https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-1.9.7-linux-i686.tar.bz2" \
+    "http://chromedriver.storage.googleapis.com/2.9/chromedriver_linux64.zip" \
+    "https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-1.9.7-linux-x86_64.tar.bz2" \
   )
 elif [[ "$OSTYPE" == "darwin"* ]]; then
   FilesToDownload=( \
@@ -45,7 +55,8 @@ pushd path_ext
 shopt -s nullglob #need this for cases where no .tar.bz2 files
 for p in tmp/*.zip; do unzip -n $p; done
 for p in tmp/*.tar.bz2; do tar jxf $p; done
-ln -sf phantomjs-1.9.7-macosx/bin/phantomjs .
+PhantomJSExecutable=$( find . -path './phantomjs*/bin/phantomjs')
+ln -sf $PhantomJSExecutable .
 popd
 
 echo "Setup successful"

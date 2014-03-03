@@ -12,7 +12,7 @@ Out of the box this project supports:
 * A human readable HTML report
 * Capturing screenshots of test failures
 * Extensible configuration supporting executing against different environments (eg. QA, Staging, Production)
-* Automated installation of chromedriver and phantomjs
+* Non-instrusive & automated setup of chromedriver and phantomjs
 * Fixed scheme for tagging tests using tag() method
 
 
@@ -62,6 +62,7 @@ To exclude tests that are expected to fail, or only run smoke tests
     $ rspec -t '~XFail'
     $ rspec -t 'Smoke'
 
+Mix-and-match any of the above invocations as desired!
 
 How to make it into test suite for your own website
 ---------------------------------------------------
@@ -123,4 +124,17 @@ Some of the missing bits:
 * Test/Support Windows and Linux setup / test running
 * Video capture of test runs
 * ??? What is your best practice for selenium testing?
+
+
+Linux setup notes
+------------------
+If you are trying to get this running on a headless linux box (eg. an EC2 Ubuntu instance) this might help.
+
+In order to get setup_drivers.sh to run, I had to install unzip:
+
+    $ sudo apt-get install unzip
+
+In order to get phantomjs to run, you may have to install the following libraries:
+
+    $ sudo apt-get install libfreetype6-dev libfontconfig1-dev
 
