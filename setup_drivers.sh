@@ -15,10 +15,21 @@ done
 #Depending on the OS, figure out which chromedriver and phantomjs to download
 #This hasnt been tested on windows, sooo....
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
-  FilesToDownload=( \
-    "http://chromedriver.storage.googleapis.com/2.9/chromedriver_linux64.zip" \
-    "https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-1.9.7-linux-x86_64.tar.bz2" \
-  )
+  #is it 32 or 64 bit linux...
+  MACHINE_TYPE=`uname -m`
+  if [ ${MACHINE_TYPE} == 'x86_64' ]; then
+    # 64-bit stuff here
+    FilesToDownload=( \
+      "http://chromedriver.storage.googleapis.com/2.9/chromedriver_linux64.zip" \
+      "https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-1.9.7-linux-x86_64.tar.bz2" \
+    )
+  else
+    # 32-bit stuff here
+    FilesToDownload=( \
+      "http://chromedriver.storage.googleapis.com/2.9/chromedriver_linux32.zip" \
+      "https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-1.9.7-linux-i686.tar.bz2" \
+    )
+  fi
 elif [[ "$OSTYPE" == "darwin"* ]]; then
   FilesToDownload=( \
     "http://chromedriver.storage.googleapis.com/2.9/chromedriver_mac32.zip" \
