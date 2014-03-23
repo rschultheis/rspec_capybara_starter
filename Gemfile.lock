@@ -1,6 +1,9 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    activesupport (3.2.13)
+      i18n (= 0.6.1)
+      multi_json (~> 1.0)
     addressable (2.3.5)
     builder (3.2.2)
     capybara (2.2.1)
@@ -17,6 +20,7 @@ GEM
     cliver (0.3.2)
     diff-lcs (1.2.5)
     ffi (1.9.3)
+    i18n (0.6.1)
     launchy (2.4.2)
       addressable (~> 2.3)
     mime-types (2.1)
@@ -50,6 +54,8 @@ GEM
       multi_json (~> 1.0)
       rubyzip (~> 1.0)
       websocket (~> 1.0.4)
+    tcfg (0.0.1)
+      activesupport (~> 3.2)
     websocket (1.0.7)
     websocket-driver (0.3.2)
     xpath (2.0.0)
@@ -65,3 +71,4 @@ DEPENDENCIES
   rspec (= 2.14.1)
   rspec_junit_formatter (= 0.1.6)
   selenium-webdriver (= 2.40.0)
+  tcfg (~> 0.0.1)

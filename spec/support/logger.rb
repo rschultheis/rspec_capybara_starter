@@ -69,9 +69,8 @@ end
 #The log file is always at debug log level
 #the console is controllable using LOG_LEVEL config setting
 include TestSuite::Log
-include TestSuite::Configuration
 add_logger(STDOUT)
-set_log_level test_config.fetch('LOG_LEVEL', :debug)
+set_log_level TCFG.tcfg.fetch('LOG_LEVEL', :debug)
 #adding log file after setting log level means log files is always at debug
 FileUtils.mkdir_p 'reports'
 add_logger(File.open('reports/test_run.log', 'a'))

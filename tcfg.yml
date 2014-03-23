@@ -2,11 +2,12 @@
 ---
 
 #start with global configuration
-TEST_BROWSER: firefox
+BROWSER: firefox
 LOG_LEVEL: debug
+BASE_URL: http://google.com
 
 #and environment based overrides
-ENVIRONMENTS:
+tcfg_environments:
   qa:
     BASE_URL: http://google.com
 

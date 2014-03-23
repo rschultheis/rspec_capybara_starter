@@ -10,7 +10,7 @@ RSpec.configure do |config|
     ENV['PATH'] = File.join(Dir.pwd, 'path_ext') + ':' + ENV['PATH']
 
     #next set up the browser
-    browser = test_config[TestSuite::Configuration::BrowserVarName].downcase.intern
+    browser = tcfg[:BROWSER].downcase.intern
     case browser
     when :poltergeist, :phantomjs, :headless
       require 'capybara/poltergeist'
@@ -35,6 +35,6 @@ RSpec.configure do |config|
     Capybara.default_driver = browser
 
     #next set the hostname / base url
-    Capybara.app_host = test_config['BASE_URL']
+    Capybara.app_host = tcfg['BASE_URL']
   end
 end
