@@ -7,7 +7,7 @@ LOG_LEVEL: debug
 BASE_URL: http://google.com
 
 #and environment based overrides
-tcfg_environments:
+t_environments:
   qa:
     BASE_URL: http://google.com
 

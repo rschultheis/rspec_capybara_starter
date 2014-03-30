@@ -46,16 +46,16 @@ To simply run all tests using all defaults:
 
 To run tests using Chrome or PhantomJS:
 
-    $ TCFG_BROWSER=chrome rspec
-    $ TCFG_BROWSER=phantomjs rspec
+    $ T_BROWSER=chrome rspec
+    $ T_BROWSER=phantomjs rspec
 
 To run tests against a specific environment:
 
-    $ TCFG_ENVIRONMENT=production rspec
+    $ T_ENVIRONMENT=production rspec
 
 To run tests without debug logging on the console
 
-    $ TCFG_LOG_LEVEL=warn rspec
+    $ T_LOG_LEVEL=warn rspec
 
 
 To exclude tests that are expected to fail, or only run smoke tests

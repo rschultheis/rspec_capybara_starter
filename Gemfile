@@ -18,4 +18,4 @@ gem 'poltergeist', '1.5.0'
 #for capturing screenshots
 gem 'capybara-screenshot'
 
-gem 'tcfg', '~> 0.0.1'
+gem 'tcfg', '~> 0.1'
