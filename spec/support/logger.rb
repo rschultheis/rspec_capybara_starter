@@ -46,18 +46,18 @@ RSpec.configure do |config|
   config.before(:each) do |example|
     debug ''
     debug '============================='
-    debug "Starting test: " + example.example.full_description
-    debug "From file    : " + example.example.file_path
+    debug "Starting test: " + example.full_description
+    debug "From file    : " + example.file_path
     debug '-----------------------------'
   end
 
   config.after(:each) do |example|
     debug ''
     debug '-----------------------------'
-    debug "Completed test: " + example.example.full_description
-    debug "From file     : " + example.example.file_path
-    if example.example.exception
-      debug "Result        : Fail - " + example.example.exception.to_s
+    debug "Completed test: " + example.full_description
+    debug "From file     : " + example.file_path
+    if example.exception
+      debug "Result        : Fail - " + example.exception.to_s
     else
       debug "Result        : Pass"
     end
