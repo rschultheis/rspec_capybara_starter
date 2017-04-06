@@ -15,7 +15,4 @@ gem 'capybara', '~> 2'
 #for driving phantomjs for headless testing
 gem 'poltergeist', '~> 1'
 
-#for capturing screenshots
-gem 'capybara-screenshot', '~> 1'
-
 gem 'tcfg', '~> 0.1'

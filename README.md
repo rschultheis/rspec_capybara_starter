@@ -10,7 +10,6 @@ Out of the box this project supports:
 * Test execution using Firefox ,Chrome, PhantomJS
 * Integration into most CI servers (Jenkins, Bamboo)
 * A human readable HTML report
-* Capturing screenshots of test failures
 * Extensible configuration supporting executing against different environments (eg. QA, Staging, Production)
 * Non-instrusive & automated setup of chromedriver and phantomjs
 * Fixed scheme for tagging tests using tag() method
@@ -94,6 +93,7 @@ TODO
 This project should incorporate all accepted best practices for Standalone RSpec Selenium testing.
 Some of the missing bits:
 
+* Capturing screenshots of test failures
 * Setup custom browser profiles to avoid popups as much as possible
 * Embed screenshots inside html report.  Screenshots are right now saved external to the html report.
 * IE support
