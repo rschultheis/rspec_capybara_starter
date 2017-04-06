@@ -6,8 +6,8 @@ describe "searching Google.com" do
 
   #this test should pass
   it "should allow me to search for 'green cheese'", tag('Smoke') do
-    fill_in('q', with: 'green cheese')
-    expect(page).to have_content('Green cheese is a term for a fresh cheese, one that has not thoroughly dried yet, nor been aged, which is white in colour and usually round in shape')
+    fill_in('q', with: "green cheese\n")
+    expect(page).to have_content('unripened or unmatured cheese.')
   end
 
   #this test should fail
