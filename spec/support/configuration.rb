@@ -1,5 +1,3 @@
-require 'tcfg'
-
 RSpec.configure do |config|
   config.include TCFG::Helper
 

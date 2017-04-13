@@ -1,5 +1,4 @@
 require 'logger'
-require 'tcfg'
 
 module TestSuite
   module Log

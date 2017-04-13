@@ -1,3 +1,8 @@
+# Use bundler to require all gems upfront
+# this fails early on dependency issues
+# and also means no other requires for gems needed
+require 'bundler'
+Bundler.require
 
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
