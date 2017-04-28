@@ -11,25 +11,25 @@ module TestSuite
       @@loggers
     end
 
-    def add_logger handle
+    def add_logger(handle)
       new_logger = Logger.new handle
       new_logger.progname = 'tests'
       new_logger.formatter = LogFormatter
       @@loggers << new_logger
     end
 
-    def set_log_level level
+    def set_log_level(level)
       level = Logger.const_get(level.to_s.upcase)
-      @@loggers.each { |logger| logger.level = level}
+      @@loggers.each { |logger| logger.level = level }
     end
 
-    def log level, msg
-      @@loggers.each {|logger| logger.send(level, msg)}
+    def log(level, msg)
+      @@loggers.each { |logger| logger.send(level, msg) }
     end
 
-    [:fatal, :error, :warn, :info,:debug].each do |log_method|
+    %i[fatal error warn info debug].each do |log_method|
       define_method log_method do |msg|
-        self.log(log_method, msg)
+        log(log_method, msg)
       end
     end
 
@@ -42,35 +42,35 @@ end
 RSpec.configure do |config|
   config.include TestSuite::Log
 
-  #log the start of each test to make debugging easier
+  # log the start of each test to make debugging easier
   config.before(:each) do |example|
     debug ''
     debug '============================='
-    debug "Starting test: " + example.full_description
-    debug "From file    : " + example.file_path
+    debug 'Starting test: ' + example.full_description
+    debug 'From file    : ' + example.file_path
     debug '-----------------------------'
   end
 
   config.after(:each) do |example|
     debug ''
     debug '-----------------------------'
-    debug "Completed test: " + example.full_description
-    debug "From file     : " + example.file_path
+    debug 'Completed test: ' + example.full_description
+    debug 'From file     : ' + example.file_path
     if example.exception
-      debug "Result        : Fail - " + example.exception.to_s
+      debug 'Result        : Fail - ' + example.exception.to_s
     else
-      debug "Result        : Pass"
+      debug 'Result        : Pass'
     end
     debug '============================='
   end
 end
 
-#setup logging to both console and to a log file
-#The log file is always at debug log level
-#the console is controllable using LOG_LEVEL config setting
+# setup logging to both console and to a log file
+# The log file is always at debug log level
+# the console is controllable using LOG_LEVEL config setting
 include TestSuite::Log
 add_logger(STDOUT)
 set_log_level TCFG.tcfg.fetch('LOG_LEVEL', :debug)
-#adding log file after setting log level means log files is always at debug
+# adding log file after setting log level means log files is always at debug
 FileUtils.mkdir_p 'reports'
 add_logger(File.open('reports/test_run.log', 'a'))
