@@ -34,7 +34,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
   fi
 elif [[ "$OSTYPE" == "darwin"* ]]; then
   FilesToDownload=( \
-    "http://chromedriver.storage.googleapis.com/2.28/chromedriver_mac32.zip" \
+    "https://chromedriver.storage.googleapis.com/2.31/chromedriver_mac64.zip" \
     "https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-1.9.7-macosx.zip" \
     "https://github.com/mozilla/geckodriver/releases/download/v0.15.0/geckodriver-v0.15.0-macos.tar.gz" \
   )
