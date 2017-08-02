@@ -18,6 +18,19 @@ Out of the box this project supports:
 How to use it
 -------------
 
+### !!!Disclaimer!!!
+
+Getting these kinds of webdriver/selenium tests to successfully run requires having coordinated versions of chrome/chromedriver and firefox/geckodriver, in addition to selenium-webdriver and capybara.  These versions change frequently, so it is not possible
+for this project to be kept up-to-date at all times.
+
+If you follow the instructions below and things are not working, here are some things to try:
+
+* Update chrome and firefox to the latest versions
+* Update capybara, selenium-webdriver to latest by running: $ bundle update
+* Update the versions of geckodriver and chromedriver to latest in setup_drivers.sh.  Then re-run it.
+
+Generally, if you do all the above things should work.  Please submit a PR if this is the case for you.  If not, feel free to file an issue and I will do my best to help you.
+
 ### Setup
 
 You will need a recent version of Ruby (minimum recommended version is 1.9.3, but 2.x is best). The recommended way to setup Ruby is using either [rbenv](https://github.com/sstephenson/rbenv) or [rvm](https://rvm.io/).
@@ -117,4 +130,3 @@ In order to get setup_drivers.sh to run, I had to install unzip:
 In order to get phantomjs to run, you may have to install the following libraries:
 
     $ sudo apt-get install libfreetype6-dev libfontconfig1-dev
-
