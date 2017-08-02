@@ -56,10 +56,11 @@ To simply run all tests using all defaults:
 
     $ rspec
 
-To run tests using Chrome or PhantomJS:
+To run tests using various browsers:
 
     $ T_BROWSER=chrome rspec
-    $ T_BROWSER=phantomjs rspec
+    $ T_BROWSER=firefox rspec
+    $ T_BROWSER=headless_chrome rspec
 
 To run tests against a specific environment:
 
@@ -122,9 +123,10 @@ Some of the missing bits:
 Headless testing notes
 ----------------------
 Previously, this project supported PhantomJS for headless execution.  This was never a super-reliable way of running tests against JS heavy websites.  Support for PhantomJS
-has been removed in favor of moving towards support for headless chrome testing.  As
-of yet the Author has not spent the time to figure out how to use headless chrome, but
-is interested in PRs that enable that feature!
+has been removed in favor of moving towards support for headless chrome testing.
+
+This project now supports headless chrome.  Use T_BROWSER=headless to invoke the
+tests using headless chrome.
 
 Linux setup notes
 ------------------
