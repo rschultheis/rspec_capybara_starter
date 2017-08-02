@@ -20,29 +20,29 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
   if [ ${MACHINE_TYPE} == 'x86_64' ]; then
     # 64-bit stuff here
     FilesToDownload=( \
-      "http://chromedriver.storage.googleapis.com/2.28/chromedriver_linux64.zip" \
+      "https://chromedriver.storage.googleapis.com/2.31/chromedriver_linux64.zip" \
       "https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2" \
-      "https://github.com/mozilla/geckodriver/releases/download/v0.15.0/geckodriver-v0.15.0-linux64.tar.gz" \
+      "https://github.com/mozilla/geckodriver/releases/download/v0.18.0/geckodriver-v0.18.0-linux64.tar.gz" \
     )
   else
     # 32-bit stuff here
     FilesToDownload=( \
-      "https://chromedriver.storage.googleapis.com/2.28/chromedriver_linux32.zip" \
+      "https://chromedriver.storage.googleapis.com/2.31/chromedriver_linux32.zip" \
       "https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-1.9.7-linux-i686.tar.bz2" \
-      "https://github.com/mozilla/geckodriver/releases/download/v0.14.0/geckodriver-v0.14.0-linux32.tar.gz" \
+      "https://github.com/mozilla/geckodriver/releases/download/v0.18.0/geckodriver-v0.18.0-macos.tar.gz" \
     )
   fi
 elif [[ "$OSTYPE" == "darwin"* ]]; then
   FilesToDownload=( \
     "https://chromedriver.storage.googleapis.com/2.31/chromedriver_mac64.zip" \
     "https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-1.9.7-macosx.zip" \
-    "https://github.com/mozilla/geckodriver/releases/download/v0.15.0/geckodriver-v0.15.0-macos.tar.gz" \
+    "https://github.com/mozilla/geckodriver/releases/download/v0.18.0/geckodriver-v0.18.0-macos.tar.gz" \
   )
 elif [[ "$OSTYPE" == "win32" ]]; then
   FilesToDownload=( \
-    "http://chromedriver.storage.googleapis.com/2.28/chromedriver_win32.zip" \
+    "https://chromedriver.storage.googleapis.com/2.31/chromedriver_win32.zip" \
     "https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-1.9.7-windows.zip" \
-    "https://github.com/mozilla/geckodriver/releases/download/v0.15.0/geckodriver-v0.15.0-win32.zip" \
+    "https://github.com/mozilla/geckodriver/releases/download/v0.18.0/geckodriver-v0.18.0-win32.zip" \
   )
 else
   echo "Unable to detect your OS type"
