@@ -12,14 +12,25 @@ RSpec.configure do |config|
     # next set up the browser
     browser = tcfg[:BROWSER].downcase.intern
     case browser
+
     when :firefox, :chrome
       Capybara.register_driver browser do |app|
         Capybara::Selenium::Driver.new(app, browser: browser)
       end
+      Capybara.default_driver = browser
+
+    when :headless, :chrome_headless
+      Capybara.register_driver :chrome do |app|
+        Capybara::Selenium::Driver.new app,
+                                       browser: :chrome,
+                                       options: Selenium::WebDriver::Chrome::Options.new(args: %w[headless disable-gpu])
+      end
+      Capybara.default_driver = :chrome
+      Capybara.javascript_driver = :chrome
+
     else
       Kernel.abort "Unsupported browser: #{browser}"
     end
-    Capybara.default_driver = browser
 
     # next set the hostname / base url
     Capybara.app_host = tcfg['BASE_URL']
