@@ -7,7 +7,7 @@ The project is a ready-to-go starting point for developing standalone Selenium t
 
 Out of the box this project supports:
 
-* Test execution using Firefox ,Chrome, PhantomJS
+* Test execution using Firefox and Chrome
 * Integration into most CI servers (Jenkins, Bamboo)
 * A human readable HTML report
 * Extensible configuration supporting executing against different environments (eg. QA, Staging, Production)
@@ -118,6 +118,13 @@ Some of the missing bits:
 * Video capture of test runs
 * ??? What is your best practice for selenium testing?
 
+
+Headless testing notes
+----------------------
+Previously, this project supported PhantomJS for headless execution.  This was never a super-reliable way of running tests against JS heavy websites.  Support for PhantomJS
+has been removed in favor of moving towards support for headless chrome testing.  As
+of yet the Author has not spent the time to figure out how to use headless chrome, but
+is interested in PRs that enable that feature!
 
 Linux setup notes
 ------------------
