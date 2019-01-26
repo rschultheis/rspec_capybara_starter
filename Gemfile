@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # The wonderful RSpec testing framework
-gem 'rspec', '~> 3.5'
+gem 'rspec', '~> 3.8'
 
 # used for generating xml test result that jenkins/CI integration need
 gem 'rspec_junit_formatter', '~> 0.2'
@@ -10,10 +10,7 @@ gem 'rspec_junit_formatter', '~> 0.2'
 gem 'selenium-webdriver', '~> 3'
 
 # dsl to make driving browsers easy
-gem 'capybara', '~> 2'
-
-# for driving phantomjs for headless testing
-gem 'poltergeist', '~> 1'
+gem 'capybara', '~> 3'
 
 # Used to manage configuration (tcfg.yml)
 # and support execution against different environments
