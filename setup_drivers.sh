@@ -20,25 +20,25 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
   if [ ${MACHINE_TYPE} == 'x86_64' ]; then
     # 64-bit stuff here
     FilesToDownload=( \
-      "https://chromedriver.storage.googleapis.com/72.0.3626.7/chromedriver_linux64.zip" \
-      "https://github.com/mozilla/geckodriver/releases/download/v0.23.0/geckodriver-v0.23.0-linux64.tar.gz" \
+      "https://chromedriver.storage.googleapis.com/110.0.5481.77/chromedriver_linux64.zip" \
+      "https://github.com/mozilla/geckodriver/releases/download/v0.32.2/geckodriver-v0.32.2-linux64.tar.gz" \
     )
   else
     # 32-bit stuff here
     FilesToDownload=( \
-      "https://chromedriver.storage.googleapis.com/72.0.3626.7/chromedriver_linux32.zip" \
-      "https://github.com/mozilla/geckodriver/releases/download/v0.23.0/geckodriver-v0.23.0-macos.tar.gz" \
+      "UNKNOWN!" \
+      "https://github.com/mozilla/geckodriver/releases/download/v0.32.2/geckodriver-v0.32.2-linux32.tar.gz" \
     )
   fi
 elif [[ "$OSTYPE" == "darwin"* ]]; then
   FilesToDownload=( \
-    "https://chromedriver.storage.googleapis.com/72.0.3626.7/chromedriver_mac64.zip" \
-    "https://github.com/mozilla/geckodriver/releases/download/v0.23.0/geckodriver-v0.23.0-macos.tar.gz" \
+    "https://chromedriver.storage.googleapis.com/110.0.5481.77/chromedriver_mac64.zip" \
+    "https://github.com/mozilla/geckodriver/releases/download/v0.32.2/geckodriver-v0.32.2-macos.tar.gz" \
   )
 elif [[ "$OSTYPE" == "win32" ]]; then
   FilesToDownload=( \
-    "https://chromedriver.storage.googleapis.com/72.0.3626.7/chromedriver_win32.zip" \
-    "https://github.com/mozilla/geckodriver/releases/download/v0.23.0/geckodriver-v0.23.0-win32.zip" \
+    "https://chromedriver.storage.googleapis.com/110.0.5481.77/chromedriver_win32.zip" \
+    "https://github.com/mozilla/geckodriver/releases/download/v0.32.2/geckodriver-v0.32.2-win32.zip" \
   )
 else
   echo "Unable to detect your OS type"
