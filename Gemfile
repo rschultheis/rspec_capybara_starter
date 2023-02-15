@@ -1,20 +1,20 @@
 source 'https://rubygems.org'
 
 # The wonderful RSpec testing framework
-gem 'rspec', '~> 3.8'
+gem 'rspec'
 
 # used for generating xml test result that jenkins/CI integration need
-gem 'rspec_junit_formatter', '~> 0.2'
+gem 'rspec_junit_formatter'
 
 # for driving browsers
-gem 'selenium-webdriver', '~> 3'
+gem 'selenium-webdriver'
 
 # dsl to make driving browsers easy
-gem 'capybara', '~> 3'
+gem 'capybara'
 
 # Used to manage configuration (tcfg.yml)
 # and support execution against different environments
-gem 'tcfg', '~> 0.2'
+gem 'tcfg'
 
 # gems in development group are not needed for running tests
 # These gems are used when writing tests to help keep code high quality
