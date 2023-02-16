@@ -1,7 +1,26 @@
 #!/bin/bash
 set -e
 
-#make sure we have everything needed to do the setup
+# SETUP WEBDRIVER UTILITIES
+#
+# Install chromedriver and geckodriver (and other drivers if needed).
+# These command line programs are needed to run webdriver tests on Chrome and Firefox.
+#
+# The programs are put into a "path_ext" subfolder.
+# The test suite will prepend "path_ext" to $PATH, ensuring these drivers are used during test execution.
+# This way of installing into local subfolder is non-intrusive to the rest of the system
+
+# Subfolder to place utilities into
+PathExt="path_ext"
+
+
+# base paths for the drivers to download
+# ChromeDriver: https://chromedriver.chromium.org/downloads
+ChromeDriverBasePath="https://chromedriver.storage.googleapis.com/110.0.5481.77/chromedriver_"
+# GeckoDriver for Firefox: https://github.com/mozilla/geckodriver/releases
+GeckoDriverBasePath="https://github.com/mozilla/geckodriver/releases/download/v0.32.2/geckodriver-v0.32.2-"
+
+# make sure we have everything needed to do the setup
 NEEDED_UTILS=( \
   "wget" \
   "unzip" \
@@ -12,48 +31,48 @@ do
   command -v $util >/dev/null 2>&1 || { echo >&2 "I require $util but it's not installed.  Aborting."; exit 1; }
 done
 
-#Depending on the OS, figure out which chromedriver and phantomjs to download
-#This hasnt been tested on windows, sooo....
+# Depending on the OS, figure out which driver package file to download
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
   #is it 32 or 64 bit linux...
   MACHINE_TYPE=`uname -m`
   if [ ${MACHINE_TYPE} == 'x86_64' ]; then
-    # 64-bit stuff here
+    # 64 Bit Linux
     FilesToDownload=( \
-      "https://chromedriver.storage.googleapis.com/110.0.5481.77/chromedriver_linux64.zip" \
-      "https://github.com/mozilla/geckodriver/releases/download/v0.32.2/geckodriver-v0.32.2-linux64.tar.gz" \
+      $ChromeDriverBasePath"linux64.zip" \
+      $GeckoDriverBasePath"linux64.tar.gz" \
     )
   else
-    # 32-bit stuff here
+    # 32 Bit Linux
     FilesToDownload=( \
-      "UNKNOWN!" \
-      "https://github.com/mozilla/geckodriver/releases/download/v0.32.2/geckodriver-v0.32.2-linux32.tar.gz" \
+      $ChromeDriverBasePath"linux32.zip" \
+      $GeckoDriverBasePath"linux32.tar.gz" \
     )
   fi
 elif [[ "$OSTYPE" == "darwin"* ]]; then
+  # Apple OSX / Macbook
   FilesToDownload=( \
-    "https://chromedriver.storage.googleapis.com/110.0.5481.77/chromedriver_mac64.zip" \
-    "https://github.com/mozilla/geckodriver/releases/download/v0.32.2/geckodriver-v0.32.2-macos.tar.gz" \
+    $ChromeDriverBasePath"mac64.zip" \
+    $GeckoDriverBasePath"macos.tar.gz" \
   )
 elif [[ "$OSTYPE" == "win32" ]]; then
+  # Microsoft Windows
   FilesToDownload=( \
-    "https://chromedriver.storage.googleapis.com/110.0.5481.77/chromedriver_win32.zip" \
-    "https://github.com/mozilla/geckodriver/releases/download/v0.32.2/geckodriver-v0.32.2-win32.zip" \
+    $ChromeDriverBasePath"win32.zip" \
+    $GeckoDriverBasePath"win32.zip" \
   )
 else
-  echo "Unable to detect your OS type"
-  exit
+  echo "ERROR: Unknown OS type"
+  exit 1
 fi
 
+# make the path extension subfolder
+mkdir -p $PathExt"/tmp"
 
-#make the directory where we'll keep the packages we download
-mkdir -p "path_ext/tmp"
-
-# GET PLUGINS
+# Download the driver package files
 for download_url in ${FilesToDownload[*]}
 do
   basename=${download_url##*/}
-  file_path="path_ext/tmp/$basename"
+  file_path=$PathExt"/tmp/$basename"
   if [ ! -e $file_path ]
   then
     wget -x \
@@ -62,8 +81,8 @@ do
   fi
 done
 
-# EXTRACT PLUGINS
-pushd path_ext
+# Extract package files
+pushd $PathExt
 shopt -s nullglob #need this for cases where no .tar.bz2 files
 for p in tmp/*.zip; do unzip -n -q $p; done
 for p in tmp/*.tar.bz2; do tar jxf $p; done
